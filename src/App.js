@@ -1,10 +1,16 @@
-import React from 'react';
+
 import  {Work}   from "./Components/Work";
 import  {Home}   from "./Components/Home";
 
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from "react-router-dom";
 import RootLayout from './Components/RootLayout';
+import { Amplify } from 'aws-amplify';
 
+import { withAuthenticator } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
+
+import awsExports from './aws-exports';
+Amplify.configure(awsExports);
 const router=createBrowserRouter(
 	createRoutesFromElements(
 		<Route path='/' element={<RootLayout />}>
@@ -22,4 +28,4 @@ function App() {
 	);
 }
 
-export default App;
+export default withAuthenticator(App);

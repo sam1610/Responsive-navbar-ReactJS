@@ -1,0 +1,14 @@
+{
+  "resourceName": "langEval",
+  "policyUUID": "6b2eab41",
+  "bucketName": "langeval2023bh",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

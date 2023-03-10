@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-langeva-dev-102205-authRole",
+      "UnauthRoleArn": "arn:aws:iam::390048945559:role/amplify-langeva-dev-102205-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::390048945559:role/amplify-langeva-dev-102205-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-langeva-dev-102205-deployment",
+      "UnauthRoleName": "amplify-langeva-dev-102205-unauthRole",
+      "StackName": "amplify-langeva-dev-102205",
+      "StackId": "arn:aws:cloudformation:us-east-1:390048945559:stack/amplify-langeva-dev-102205/f1a42250-bd81-11ed-babb-0ee1838c6167",
+      "AmplifyAppId": "d1lydnzxa7aefw"
+    },
+    "categories": {
+      "auth": {
+        "langeva237c20e6": {}
+      },
+      "storage": {
+        "langEval": {}
+      }
+    }
+  }
+}

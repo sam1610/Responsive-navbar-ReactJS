@@ -1,4 +1,5 @@
 import { FileUploader, ThemeProvider } from "@aws-amplify/ui-react";
+import { Storage } from "aws-amplify";
 
 import React from 'react'
 const theme = {
@@ -21,6 +22,25 @@ const theme = {
   };
   
 export const Home = () => {
+    const fechImage= async (key)=>{
+        const {result}= await Storage.put(key, {level:"public"})
+        const flUrl = await Storage.get(result.key, {level:"public"})
+        console.log(flUrl);
+             // const s3Image=await Promise.all(
+        //     result.map(
+                // async image=> await Storage.get(
+                //     image.key, {level:"public"}
+                // )
+
+        //     )
+        // )
+
+    }
+    const onSuccess= ({key})=>{
+    
+        fechImage(key);
+
+    }
   return (
     <ThemeProvider theme={theme}>
     <FileUploader
@@ -29,7 +49,9 @@ export const Home = () => {
     maxFileCount={1}
     accessLevel="public"
     acceptedFileTypes={['.gif', '.bmp', '.jpeg', '.jpg']}
-    variation="drop" />
+    variation="drop" 
+    onSuccess={onSuccess}
+    isPreviewerVisible={true}/>
 
     </ThemeProvider>
   )
