@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-responsivenavbarreac-dev-234005-authRole",
+      "UnauthRoleArn": "arn:aws:iam::390048945559:role/amplify-responsivenavbarreac-dev-234005-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::390048945559:role/amplify-responsivenavbarreac-dev-234005-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-responsivenavbarreac-dev-234005-deployment",
+      "UnauthRoleName": "amplify-responsivenavbarreac-dev-234005-unauthRole",
+      "StackName": "amplify-responsivenavbarreac-dev-234005",
+      "StackId": "arn:aws:cloudformation:us-east-1:390048945559:stack/amplify-responsivenavbarreac-dev-234005/b9af1a60-d25f-11ed-8029-1219ae28fa13",
+      "AmplifyAppId": "dlign8i1v0gba"
+    }
+  }
+}

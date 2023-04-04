@@ -1,0 +1,50 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-questlang-dev-92542-authRole",
+      "UnauthRoleArn": "arn:aws:iam::390048945559:role/amplify-questlang-dev-92542-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::390048945559:role/amplify-questlang-dev-92542-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-questlang-dev-92542-deployment",
+      "UnauthRoleName": "amplify-questlang-dev-92542-unauthRole",
+      "StackName": "amplify-questlang-dev-92542",
+      "StackId": "arn:aws:cloudformation:us-east-1:390048945559:stack/amplify-questlang-dev-92542/600a0280-d1e8-11ed-b23b-0a41fe0ace1b",
+      "AmplifyAppId": "d2tudlngu40qkf"
+    }
+  },
+  "auth": {
+    "questlang94be4044": {
+      "customAuth": false,
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
+    }
+  },
+  "storage": {
+    "s343c02c83": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
+    }
+  }
+}
