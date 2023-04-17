@@ -10,6 +10,18 @@
       "StackName": "amplify-responsivenavbarreac-dev-234005",
       "StackId": "arn:aws:cloudformation:us-east-1:390048945559:stack/amplify-responsivenavbarreac-dev-234005/b9af1a60-d25f-11ed-8029-1219ae28fa13",
       "AmplifyAppId": "dlign8i1v0gba"
+    },
+    "categories": {
+      "auth": {
+        "responsivenavbarreac00af8289": {},
+        "userPoolGroups": {}
+      },
+      "storage": {
+        "questlang": {}
+      },
+      "api": {
+        "responsivenavbarreac": {}
+      }
     }
   }
 }

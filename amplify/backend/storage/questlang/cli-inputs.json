@@ -1,0 +1,14 @@
+{
+  "resourceName": "questlang",
+  "policyUUID": "e269a740",
+  "bucketName": "questlangbh2023",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

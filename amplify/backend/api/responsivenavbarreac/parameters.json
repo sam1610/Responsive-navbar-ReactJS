@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "responsivenavbarreac",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authresponsivenavbarreac00af8289",
+      "Outputs.UserPoolId"
+    ]
+  }
+}

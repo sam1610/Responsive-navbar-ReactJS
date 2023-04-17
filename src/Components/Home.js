@@ -1,7 +1,15 @@
-import { FileUploader, ThemeProvider } from "@aws-amplify/ui-react";
-import { Storage } from "aws-amplify";
+import { FileUploader, 
+  ThemeProvider, 
+  useTheme,  
+  Divider, 
+  TextAreaField, 
+  SwitchField } from "@aws-amplify/ui-react";
+import { API, Storage } from "aws-amplify";
+import DatePk  from "./DatePk"
+import { useState } from "react";
+import "./home.css"
+import { createQuest } from "../graphql/mutations";
 
-import { useState } from 'react'
 const theme = {
     name: 'my-theme',
     tokens: {
@@ -23,22 +31,88 @@ const theme = {
   
 export const Home = () => {
 const [img, setImg] = useState(null)
-    const fechImage= async (keys)=>{
-    
-        await Storage.put(keys, {level:"public"}).then(
-          async res=>  
-           await Storage.get(res.key, {level:"public"}).then(
-            url=> setImg(URL.createObjectURL(url))
-           )
-          )
+const [aud, setAud] = useState(false)
+const {tokens}= useTheme()
+const initlialize={
+  lang:"Fr", textOrg:"", shedOn:"", audioUrlOrg:"" }
+const [quest, setQuest] = useState(initlialize)
+const  lab=()=> {
+  if (aud) return "Audio 🔊"
+  else return "Audio 🔇"
+}
+const handleChange=(key)=>{
+  return (e)=> {
+    setQuest(
+      {...quest, [key]:e.target.value}
+    )
+  }
+}
+
+const storeQuestion= async (keys)=>{
+console.log(keys);
+        setQuest({...quest, img:keys})
+        await Storage.put(keys, {level:"public"})
+        await API.graphql(
+          {query: createQuest, 
+          variables: {
+            input: {
+              quest
+            }
+          }
+        }
+        )
     }
-    const onSuccess= ({keys})=>{
+
+    const onSuccess= async ({keys})=>{
     
-        fechImage(keys);
+        storeQuestion(keys);
+        // const image =
+        //     await Storage.get(keys, {
+        //         level: "public",
+               
+        //         download: true,
+        //         cacheControl: "no-cache",
+        //     })
+        // setImg( URL.createObjectURL(image["Body"]))
 
     }
   return (
     <>
+    <div className="box">
+      <div>
+
+        <DatePk />
+      </div> 
+        <div>
+  <SwitchField 
+isDisabled={false}
+defaultChecked={aud} 
+label={ lab()}
+labelPosition="top"
+thumbColor={tokens.colors.blue[10]}
+onChange={() => { 
+  setAud(!aud)
+  
+}}
+/>
+        </div>
+
+    </div>
+
+
+<TextAreaField
+            label="Question :"
+            descriptiveText=" Type the Question here :"
+            size="large"
+            placeholder="Question ...."
+            variation="quite"
+            isRequired={true}
+            value={quest.textOrg}
+            onChange={handleChange("textOrg")}
+
+/>    
+<Divider
+        orientation="horizontal" />
     <ThemeProvider theme={theme}>
     <FileUploader
     hasMultipleFiles={false}
@@ -46,13 +120,10 @@ const [img, setImg] = useState(null)
     maxFileCount={1}
     accessLevel="public"
     acceptedFileTypes={['.gif', '.bmp', '.jpeg', '.jpg']}
-    variation="drop" 
+    variation="button" 
     onSuccess={onSuccess}
     isPreviewerVisible={true}/>
-
-    </ThemeProvider>
-    
-
+    </ThemeProvider>  
     
     </>
   )

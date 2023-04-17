@@ -1,12 +1,36 @@
-import React from 'react';
-import Navbar from "./Components/Navbar";
 
-function App() {
+import  {Home}   from "./Components/Home";
+import  {Work}   from "./Components/Work";
+import  {Blog}   from "./Components/Blog";
+import  {Profile}   from "./Components/Profile";
+
+import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from "react-router-dom";
+import RootLayout from './Components/RootLayout';
+import { Amplify } from 'aws-amplify';
+
+import { withAuthenticator } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
+
+import awsExports from './aws-exports';
+Amplify.configure(awsExports);
+const router=createBrowserRouter(
+	createRoutesFromElements(
+		<Route path='/' element={<RootLayout />}>
+			<Route index element={<Home />}/>
+			<Route path="tabeau" element={<Work />}/>
+			<Route path="blog" element={<Blog />}/>
+			<Route path="profile" element={<Profile />}/>
+		</Route>
+	)
+)
+function App({signOut, user}) {
+	console.log(user.attributes.email);
 	return (
-		<React.Fragment>
-			<Navbar/>
-		</React.Fragment>
+		<>
+		 
+		<RouterProvider router={router} />
+		</>
 	);
 }
 
-export default App;
+export default withAuthenticator(App);

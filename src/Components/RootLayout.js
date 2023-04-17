@@ -16,12 +16,12 @@ function RootLayout() {
         <>
        
 		<header >
-			<h3>LOGO</h3>
+			<h3>Language</h3>
 			<nav ref={navRef} onClick={showNavbar}>
 				<NavLink to="/"   >Home </NavLink>
 				<NavLink to="/tabeau">My work</NavLink>
 				<NavLink to="/blog">Blog</NavLink>
-				<NavLink to="/me">about me</NavLink>
+				<NavLink to="/profile">Profile</NavLink>
 				<button
 					className="nav-btn nav-close-btn"
 					onClick={showNavbar}>
